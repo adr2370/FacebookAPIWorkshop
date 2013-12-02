@@ -1,14 +1,20 @@
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
 <body>
 <div id="fb-root"></div>
-<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+<fb:login-button id="fb-login-button" show-faces="false" width="200"></fb:login-button>
 <script>
   var appId = '<INSERT YOUR APP ID HERE>';
   function userConnected() {
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Good to see you, ' + response.name + '.');
+	  f.id = response.id;
+	  f.name = response.name;
+	  f.username = response.username;
+	  f.gender = response.gender;
+	  printEverything();
     });
   }
 </script>
